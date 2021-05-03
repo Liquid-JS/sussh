@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  sussh:
+    image: sussh
+    ports:
+      - target: 22
+        published: 2223
+        protocol: tcp
+        mode: host
+    environment:
+      - NSS_MYSQL_HOST=host.docker.internal
+      - NSS_MYSQL_DB=nss_mysql
+      - NSS_MYSQL_USER=nss_mysql
+      - NSS_MYSQL_PASSWORD=4YiyR9KsvfH/Cuf)
+      - NSS_MYSQL_ROOT_USER=nss_mysql
+      - NSS_MYSQL_ROOT_PASSWORD=4YiyR9KsvfH/Cuf)
+
+
+networks:
+  default:
+    external:
+      name: traefik-net
