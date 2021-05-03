@@ -8,6 +8,8 @@ services:
         published: 2223
         protocol: tcp
         mode: host
+    volumes:
+      - ./keys:/sussh/host-keys
     environment:
       - NSS_MYSQL_HOST=mysql
       - NSS_MYSQL_DB=nss_mysql

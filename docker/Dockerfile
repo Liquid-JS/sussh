@@ -21,15 +21,18 @@ FROM ubuntu:20.04
 COPY --from=builder /tmp/libnss-build /
 COPY --from=builder /tmp/libnss/dockerize /usr/bin/dockerize
 RUN rm /usr/local/etc/libnss-mysql* \
-    && mkdir -p /run/sshd
+    && mkdir -p /run/sshd /sussh/host-keys
 COPY config.tpl/* /usr/local/etc/
-COPY docker-entrypoint.sh /docker-entrypoint.sh
-COPY fetch-keys.py /fetch-keys.py
+COPY docker-entrypoint.sh /sussh/docker-entrypoint.sh
+COPY fetch-keys.py /sussh/fetch-keys.py
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server python3-pip libmysqlclient21 --no-install-recommends \
     && pip3 install mysql-connector-python \
     && sed -i '/^\(passwd\|group\|shadow\|gshadow\):/s/$/ mysql/' /etc/nsswitch.conf \
-    && chmod a+x /docker-entrypoint.sh /fetch-keys.py
+    && chmod a+x /sussh/docker-entrypoint.sh /sussh/fetch-keys.py \
+    && sed -i '/motd/ s/^#*/# /' /etc/pam.d/sshd
 COPY sshd.conf /etc/ssh/sshd_config.d/sshd.conf
 
-CMD /docker-entrypoint.sh
+VOLUME [ "/sussh/host-keys" ]
+
+CMD /sussh/docker-entrypoint.sh
