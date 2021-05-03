@@ -2,14 +2,19 @@
 
 if [ ! -f "/usr/local/etc/libnss-mysql-root.cfg" ]; then
     dockerize -template /usr/local/etc/libnss-mysql-root.cfg.tpl:/usr/local/etc/libnss-mysql-root.cfg
+    chmod 400 /usr/local/etc/libnss-mysql-root.cfg
+    chown root /usr/local/etc/libnss-mysql-root.cfg
 fi
 
 if [ ! -f "/usr/local/etc/libnss-mysql.cfg" ]; then
     dockerize -template /usr/local/etc/libnss-mysql.cfg.tpl:/usr/local/etc/libnss-mysql.cfg
+    chmod 644 /usr/local/etc/libnss-mysql.cfg
 fi
 
 if [ ! -f "/usr/local/etc/auth_keys.ini" ]; then
     dockerize -template /usr/local/etc/auth_keys.ini.tpl:/usr/local/etc/auth_keys.ini
+    chmod 400 /usr/local/etc/auth_keys.ini
+    chown nobody /usr/local/etc/auth_keys.ini
 fi
 
 if [ ! -f "/sussh/host-keys/ssh_host_rsa_key" ]; then

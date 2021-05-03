@@ -29,7 +29,8 @@ RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server python3-pip libmysqlclient21 --no-install-recommends \
     && pip3 install mysql-connector-python \
     && sed -i '/^\(passwd\|group\|shadow\|gshadow\):/s/$/ mysql/' /etc/nsswitch.conf \
-    && chmod a+x /sussh/docker-entrypoint.sh /sussh/fetch-keys.py \
+    && chmod 555 /sussh/docker-entrypoint.sh /sussh/fetch-keys.py \
+    && chown root /sussh/docker-entrypoint.sh /sussh/fetch-keys.py \
     && sed -i '/motd/ s/^#*/# /' /etc/pam.d/sshd
 COPY sshd.conf /etc/ssh/sshd_config.d/sshd.conf
 
