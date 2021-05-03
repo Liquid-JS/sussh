@@ -38,7 +38,7 @@ CREATE TABLE `grouplist` (
 --
 
 INSERT INTO `grouplist` (`rowid`, `gid`, `username`) VALUES
-(1, 5000, 'cinergi');
+(1, 5000, 'sample');
 
 -- --------------------------------------------------------
 
@@ -57,7 +57,7 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`name`, `password`, `gid`) VALUES
-('foobaz', 'x', 5000);
+('sample', 'x', 5000);
 
 -- --------------------------------------------------------
 
@@ -76,7 +76,7 @@ CREATE TABLE `keys` (
 --
 
 INSERT INTO `keys` (`rowid`, `key`, `username`) VALUES
-(1, 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDbOJiexP8AiohKiZhclRkrFeKaUk8omOC4lZu6alZGQoLAY+TR/x41jGysG8c3fogXeSp5cAg8euGpMbJG/PRVXjTfEBe/fKdWya6ENMQ9vofLnR+JCY5FL3pNPnPHAHHZCSe3Xw5wXQ0umP/xrFa6ajFds1rzP69YMu8dK6/gs+K6fb+hLGPfGh4tPFkP1WtI6gMw9F55TTi3+CyUc+NJXLbcA1Ou7m2LrKBUvsbZH1ASGR2RJD2l4dR3PHgq76QhfOp7eO8s+Q39fetwNFG912fCNpLD4KymH8ZBYM0itgxWfQvkagn8x9uOsqBKW9QNmD+J7QKgz0pdm3dWOwtB imported-openssh-key', 'cinergi');
+(1, 'ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAhO2ZuOQsY3eu+PpsdkG2HDZi5fbuXIAvi0HDTTCD393FwZsbVRswRkPw+/yf2Vw7Bkky+LGcBNBNJAldlnNUiL0OkhKGGdxkfMuW59VzxuI+CO+9WUmSgldKoY0APtWGYmX8gJGcLuNYGq5BkYb9WsibgOoGXMO5GHYNAQkgVHESxeqh5+3coC2tTrzrYqb2fimrIUkLFxN5lQZmyjNVW4kPXxZOpCBmjgUKlMCAs+tP4qnaZ62X8oSBk1NWrqLfsHGHRIXaoqkv6mnFEpAm4R7taj4kglEyuffYmO9PReYc3LB2BKagEzmQICIQe8PyeF/O3RBq4/Fwvj+RzDsftw== rsa-key-20210503', 'sample');
 
 -- --------------------------------------------------------
 
@@ -106,7 +106,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`username`, `uid`, `gid`, `gecos`, `homedir`, `shell`, `password`, `lstchg`, `min`, `max`, `warn`, `inact`, `expire`, `flag`) VALUES
-('cinergi', 5000, 5000, 'Ben Goodwin', '/home/cinergi', '/bin/bash', '$6$G2pAloKLyLW7j$MvDFG4fa3EYExucCxvgzTI.NSJybyQFIBZG4yesYFJjJsLsgGx/xg.aIV8gf32al9iq0zAGZROm7fHTmVBl8p/', 1, 0, 99999, 0, 0, -1, 0);
+('sample', 5000, 5000, 'Sample User', '/home/sample', '/bin/bash', 'x', 1, 0, 99999, 0, 0, -1, 0);
 
 --
 -- Indexes for dumped tables

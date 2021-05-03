@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   sussh:
-    image: sussh
+    image: liquidjs/sussh
     ports:
       - target: 22
         published: 2223

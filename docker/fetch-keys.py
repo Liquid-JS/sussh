@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
 import configparser
-import os
 import sys
 
 import mysql.connector
