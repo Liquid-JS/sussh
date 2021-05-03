@@ -9,7 +9,7 @@ services:
         protocol: tcp
         mode: host
     environment:
-      - NSS_MYSQL_HOST=host.docker.internal
+      - NSS_MYSQL_HOST=mysql
       - NSS_MYSQL_DB=nss_mysql
       - NSS_MYSQL_USER=nss_mysql
       - NSS_MYSQL_PASSWORD=4YiyR9KsvfH/Cuf)

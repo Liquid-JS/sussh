@@ -22,8 +22,7 @@ COPY --from=builder /tmp/libnss-build /
 COPY --from=builder /tmp/libnss/dockerize /usr/bin/dockerize
 RUN rm /usr/local/etc/libnss-mysql* \
     && mkdir -p /run/sshd
-COPY libnss-mysql-root.cfg.tpl /usr/local/etc/libnss-mysql-root.cfg.tpl
-COPY libnss-mysql.cfg.tpl /usr/local/etc/libnss-mysql.cfg.tpl
+COPY config.tpl/* /usr/local/etc/
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 COPY fetch-keys.py /fetch-keys.py
 RUN apt-get update \

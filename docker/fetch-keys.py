@@ -1,16 +1,20 @@
 #!/usr/bin/python3
 
+import configparser
 import os
 import sys
 
 import mysql.connector
 
+config = configparser.ConfigParser()
+config.read('/usr/local/etc/auth_keys.ini')
+
 db = mysql.connector.connect(
-    host=os.getenv('NSS_MYSQL_HOST'),
-    user=os.getenv('NSS_MYSQL_USER'),
-    password=os.getenv('NSS_MYSQL_PASSWORD'),
-    database=os.getenv('NSS_MYSQL_DB'),
-    port=os.getenv('NSS_MYSQL_PORT') or 3306
+    host=config['main']['host'],
+    user=config['main']['username'],
+    password=config['main']['password'],
+    database=config['main']['database'],
+    port=config['main']['port']
 )
 
 cursor = db.cursor()
