@@ -31,7 +31,9 @@ RUN apt-get update \
     && sed -i '/^\(passwd\|group\|shadow\|gshadow\):/s/$/ mysql/' /etc/nsswitch.conf \
     && chmod 555 /sussh/docker-entrypoint.sh /sussh/fetch-keys.py \
     && chown root /sussh/docker-entrypoint.sh /sussh/fetch-keys.py \
-    && sed -i '/motd/ s/^#*/# /' /etc/pam.d/sshd
+    && sed -i '/motd/ s/^#*/# /' /etc/pam.d/sshd \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean autoclean
 COPY sshd.conf /etc/ssh/sshd_config.d/sshd.conf
 
 VOLUME [ "/sussh/host-keys" ]
