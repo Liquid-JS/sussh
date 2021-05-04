@@ -29,4 +29,4 @@ if [ ! -f "/sussh/host-keys/ssh_host_ed25519_key" ]; then
     ssh-keygen -q -N "" -t ed25519 -f /sussh/host-keys/ssh_host_ed25519_key
 fi
 
-/usr/sbin/sshd -D
+/usr/sbin/sshd -D $@
