@@ -26,7 +26,8 @@ COPY config.tpl/* /usr/local/etc/
 COPY docker-entrypoint.sh /sussh/docker-entrypoint.sh
 COPY fetch-keys.py /sussh/fetch-keys.py
 RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server python3-mysql.connector libmysqlclient21 --no-install-recommends \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server python3-pip libmysqlclient21 --no-install-recommends \
+    && pip3 install mysql-connector-python --break-system-packages \
     && sed -i '/^\(passwd\|group\|shadow\|gshadow\):/s/$/ mysql/' /etc/nsswitch.conf \
     && chmod 555 /sussh/docker-entrypoint.sh /sussh/fetch-keys.py \
     && chown root /sussh/docker-entrypoint.sh /sussh/fetch-keys.py \
