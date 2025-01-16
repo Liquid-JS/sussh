@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 AS builder
+FROM ubuntu:24.04 AS builder
 
 WORKDIR /tmp/libnss
 ENV VERSION=1.7.1
@@ -17,7 +17,7 @@ RUN cd libnss-mysql-${VERSION} \
 
 
 
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 COPY --from=builder /tmp/libnss-build /
 COPY --from=builder /tmp/libnss/dockerize /usr/bin/dockerize
 RUN rm /usr/local/etc/libnss-mysql* \
